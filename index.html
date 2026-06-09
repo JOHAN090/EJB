@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UMSA - Sistema SSA y Trámites</title>
+    <link rel="stylesheet" href="estilos.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="cabecera-app">
+        <div class="contenedor-logo">
+            <div class="logo">UMSA</div>
+            <h1>Sistema Académico (SSA)</h1>
+        </div>
+        <div id="info-usuario" class="info-usuario oculto" data-testid="contenedor-info-usuario">
+            <span id="texto-nombre-usuario" data-testid="texto-nombre-usuario"></span>
+            <button id="btn-cerrar-sesion" class="btn-secundario" data-testid="btn-cerrar-sesion">Cerrar Sesión</button>
+        </div>
+    </header>
+
+    <main id="contenedor-app">
+        <!-- Notificaciones -->
+        <div id="contenedor-notificacion" class="notificacion oculto" data-testid="notificacion-global"></div>
+
+        <!-- Vista de Login -->
+        <section id="vista-login" class="vista activo" data-testid="vista-login">
+            <div class="tarjeta tarjeta-login">
+                <h2>Iniciar Sesión</h2>
+                <form id="formulario-login" data-testid="formulario-login">
+                    <div class="grupo-formulario">
+                        <label for="input-matricula">Número de Matrícula</label>
+                        <input type="text" id="input-matricula" required placeholder="Ej. 1700123" data-testid="login-matricula">
+                    </div>
+                    <div class="grupo-formulario">
+                        <label for="input-ci">Carnet de Identidad (Contraseña)</label>
+                        <input type="password" id="input-ci" required placeholder="Ej. 8345678" data-testid="login-ci">
+                    </div>
+                    <button type="submit" id="btn-enviar-login" class="btn-primario" data-testid="btn-enviar-login">Ingresar</button>
+                </form>
+            </div>
+        </section>
+
+        <!-- Vista Panel de Control (Dashboard) -->
+        <section id="vista-panel" class="vista oculto" data-testid="vista-panel">
+            <div class="cabecera-panel">
+                <h2>Bienvenido al Sistema</h2>
+                <p>Seleccione un trámite a realizar</p>
+            </div>
+            <div class="cuadricula-menu">
+                <div class="tarjeta-menu" id="btn-menu-inscripcion" data-testid="btn-menu-inscripcion">
+                    <div class="icono">📚</div>
+                    <h3>Inscripción de Materias</h3>
+                    <p>Inscripción semestral según avance académico</p>
+                </div>
+                <div class="tarjeta-menu" id="btn-menu-egreso" data-testid="btn-menu-egreso">
+                    <div class="icono">🎓</div>
+                    <h3>Trámite de Egreso</h3>
+                    <p>Solicitud de Certificado Académico</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Vista Inscripción -->
+        <section id="vista-inscripcion" class="vista oculto" data-testid="vista-inscripcion">
+            <div class="acciones-cabecera">
+                <button class="btn-volver btn-secundario" data-destino="vista-panel" data-testid="btn-volver-inscripcion">← Volver al Menú</button>
+                <h2>Inscripción de Materias</h2>
+            </div>
+            <div class="tarjeta">
+                <div class="grupo-formulario">
+                    <label for="select-semestre">Seleccione el Semestre (Según Avance Académico):</label>
+                    <select id="select-semestre" data-testid="select-semestre">
+                        <option value="">-- Seleccionar --</option>
+                        <option value="semestre_1">Primer Semestre</option>
+                        <option value="semestre_2">Segundo Semestre</option>
+                        <option value="semestre_8">Octavo Semestre</option>
+                        <option value="semestre_9">Noveno Semestre</option>
+                    </select>
+                </div>
+
+                <div id="contenedor-materias" class="oculto" data-testid="contenedor-materias">
+                    <table class="tabla-datos" id="tabla-materias">
+                        <thead>
+                            <tr>
+                                <th>Seleccionar</th>
+                                <th>Sigla</th>
+                                <th>Materia</th>
+                                <th>Paralelo y Horario</th>
+                            </tr>
+                        </thead>
+                        <tbody id="cuerpo-tabla-materias" data-testid="cuerpo-tabla-materias">
+                            <!-- JS llenará esto -->
+                        </tbody>
+                    </table>
+                    <div class="barra-accion">
+                        <button id="btn-confirmar-inscripcion" class="btn-primario" disabled data-testid="btn-confirmar-inscripcion">Confirmar Inscripción</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Vista Éxito Inscripción (Boleta) -->
+        <section id="vista-exito-inscripcion" class="vista oculto" data-testid="vista-exito-inscripcion">
+            <div class="tarjeta tarjeta-exito" data-testid="modal-boleta">
+                <div class="icono-exito">✅</div>
+                <h2>Inscripción Exitosa</h2>
+                <p>Su inscripción ha sido procesada correctamente.</p>
+                
+                <div class="contenedor-boleta" id="detalles-boleta" data-testid="detalles-boleta">
+                    <!-- JS llenará los detalles -->
+                </div>
+
+                <div class="barra-accion-centro">
+                    <button class="btn-primario" onclick="window.print()" data-testid="btn-imprimir-boleta">Descargar / Imprimir Boleta</button>
+                    <button class="btn-secundario btn-volver" data-destino="vista-panel" data-testid="btn-volver-panel-desde-exito">Volver al Inicio</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Vista Trámite Egreso -->
+        <section id="vista-egreso" class="vista oculto" data-testid="vista-egreso">
+            <div class="acciones-cabecera">
+                <button class="btn-volver btn-secundario" data-destino="vista-panel" data-testid="btn-volver-egreso">← Volver al Menú</button>
+                <h2>Solicitud de Certificado de Egreso</h2>
+            </div>
+            
+            <!-- Fase 1: SSA -->
+            <div id="contenedor-validacion-ssa" class="tarjeta" data-testid="contenedor-validacion-ssa">
+                <!-- Estado (Cargando/Error/Éxito) llenado por JS -->
+            </div>
+
+            <!-- Fase 2: Lista de Verificación (Checklist) Kardex -->
+            <div id="contenedor-checklist-kardex" class="tarjeta oculto" data-testid="contenedor-checklist-kardex">
+                <h3 class="texto-exito" data-testid="mensaje-exito-ssa">✅ Fase 1 Completada: Cumples con los requisitos académicos (SSA).</h3>
+                <p><strong>Fase 2: Validación Física de Kardex.</strong> Verifica que cuentas con los siguientes documentos físicos en tu folder:</p>
+                
+                <form id="formulario-checklist" class="lista-verificacion" data-testid="formulario-checklist">
+                    <label class="item-verificacion">
+                        <input type="checkbox" class="check-folder" data-testid="check-valores">
+                        <span>Valores adquiridos en las cajas del Tesoro Universitario (Monoblock Central)</span>
+                    </label>
+                    <label class="item-verificacion">
+                        <input type="checkbox" class="check-folder" data-testid="check-carta">
+                        <span>Carta de solicitud llenada y firmada</span>
+                    </label>
+                    <label class="item-verificacion">
+                        <input type="checkbox" class="check-folder" data-testid="check-fotocopia">
+                        <span>Fotocopia simple de Cédula de Identidad (CI) y Certificado de Nacimiento</span>
+                    </label>
+                    <label class="item-verificacion">
+                        <input type="checkbox" class="check-folder" data-testid="check-certificado">
+                        <span>Certificado de Calificaciones (Historial Académico) impreso</span>
+                    </label>
+                </form>
+
+                <div class="barra-accion">
+                    <button id="btn-enviar-kardex" class="btn-primario" disabled data-testid="btn-enviar-kardex">Entregar Folder a Kardex</button>
+                </div>
+            </div>
+
+            <!-- Vista de Proceso en Kardex -->
+            <div id="contenedor-procesamiento-kardex" class="tarjeta oculto contenido-centrado" data-testid="contenedor-procesamiento-kardex">
+                <div class="cargador" data-testid="cargador-kardex"></div>
+                <h3 id="texto-estado-kardex" data-testid="texto-estado-kardex">Fase 2: Trámite en procesamiento físico por Kardex...</h3>
+            </div>
+        </section>
+
+    </main>
+
+    <script src="app.js"></script>
+</body>
+</html>

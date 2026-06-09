@@ -1,0 +1,17 @@
+[
+  {
+    "matricula": "1700123",
+    "valores_comprados": true,
+    "certificado_pagado": true
+  },
+  {
+    "matricula": "1800456",
+    "valores_comprados": false,
+    "certificado_pagado": false
+  },
+  {
+    "matricula": "1900789",
+    "valores_comprados": false,
+    "certificado_pagado": false
+  }
+]

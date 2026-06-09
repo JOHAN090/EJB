@@ -1,0 +1,20 @@
+[
+  {
+    "matricula": "1700123",
+    "materias_aprobadas": ["MAT-101", "FIS-102", "MAT-102", "QMC-100", "LIN-100", "PROG-101", "PROG-102", "SIS-201", "SIS-202"],
+    "idioma": true,
+    "trabajo_social": true
+  },
+  {
+    "matricula": "1800456",
+    "materias_aprobadas": ["MAT-101", "FIS-102"],
+    "idioma": false,
+    "trabajo_social": false
+  },
+  {
+    "matricula": "1900789",
+    "materias_aprobadas": [],
+    "idioma": false,
+    "trabajo_social": false
+  }
+]

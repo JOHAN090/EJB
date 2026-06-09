@@ -1,0 +1,21 @@
+{
+  "semestre_1": [
+    { "id": "MAT-101", "nombre": "Cálculo I", "prerrequisitos": [], "paralelos": [ {"id": "A", "horario": "Lu-Mi 08:00-10:00"}, {"id": "B", "horario": "Ma-Ju 10:00-12:00"} ] },
+    { "id": "FIS-102", "nombre": "Física Básica I", "prerrequisitos": [], "paralelos": [ {"id": "A", "horario": "Lu-Mi 10:00-12:00"}, {"id": "C", "horario": "Vi 08:00-12:00"} ] },
+    { "id": "LIN-100", "nombre": "Álgebra Lineal", "prerrequisitos": [], "paralelos": [ {"id": "A", "horario": "Lu-Mi 12:00-14:00"} ] },
+    { "id": "QMC-100", "nombre": "Química General", "prerrequisitos": [], "paralelos": [ {"id": "A", "horario": "Ma-Ju 16:00-18:00"} ] }
+  ],
+  "semestre_2": [
+    { "id": "MAT-102", "nombre": "Cálculo II", "prerrequisitos": ["MAT-101"], "paralelos": [ {"id": "A", "horario": "Lu-Mi 12:00-14:00"} ] },
+    { "id": "PROG-101", "nombre": "Programación I", "prerrequisitos": [], "paralelos": [ {"id": "A", "horario": "Ma-Ju 08:00-10:00"}, {"id": "B", "horario": "Ma-Ju 14:00-16:00"} ] },
+    { "id": "PROG-102", "nombre": "Programación II", "prerrequisitos": ["PROG-101"], "paralelos": [ {"id": "A", "horario": "Ma-Ju 08:00-10:00"} ] }
+  ],
+  "semestre_8": [
+    { "id": "SIS-201", "nombre": "Ingeniería de Software", "prerrequisitos": ["PROG-102", "MAT-102"], "paralelos": [ {"id": "A", "horario": "Lu-Mi 16:00-18:00"} ] },
+    { "id": "SIS-202", "nombre": "Base de Datos III", "prerrequisitos": ["SIS-201"], "paralelos": [ {"id": "A", "horario": "Ma-Ju 16:00-18:00"} ] }
+  ],
+  "semestre_9": [
+    { "id": "SIS-300", "nombre": "Inteligencia Artificial", "prerrequisitos": ["SIS-202"], "paralelos": [ {"id": "A", "horario": "Lu-Mi 14:00-16:00"} ] },
+    { "id": "SIS-301", "nombre": "Taller de Grado I", "prerrequisitos": ["SIS-201"], "paralelos": [ {"id": "A", "horario": "Vi 10:00-14:00"} ] }
+  ]
+}

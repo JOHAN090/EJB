@@ -1,0 +1,23 @@
+[
+  {
+    "matricula": "1700123",
+    "carnet_identidad": "8345678",
+    "cuenta_activa": true,
+    "matricula_vigente": true,
+    "nombre": "Ana Pérez"
+  },
+  {
+    "matricula": "1800456",
+    "carnet_identidad": "9123456",
+    "cuenta_activa": true,
+    "matricula_vigente": true,
+    "nombre": "Carlos Gómez"
+  },
+  {
+    "matricula": "1900789",
+    "carnet_identidad": "6543210",
+    "cuenta_activa": false,
+    "matricula_vigente": false,
+    "nombre": "Luis López"
+  }
+]
